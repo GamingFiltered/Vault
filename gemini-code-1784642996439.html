@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE VAULT — Daily Unlocks & Hand-Picked Deals</title>
+    <meta name="description" content="Crack the vault daily for exclusive hand-picked tech, home, and fitness deals.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="vault-root">
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">
+                <div class="logo-mark">V</div>
+                <div class="logo-text">THE VAULT</div>
+            </div>
+            <div class="navlinks">
+                <button data-view="home" class="active">Deals</button>
+                <button data-view="quiz">Matchmaker</button>
+                <button data-view="admin">Admin</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="view-home"></main>
+    <main id="view-quiz" style="display:none;"></main>
+    <main id="view-admin" style="display:none;"></main>
+
+    <footer>THE VAULT &mdash; every click opens the door a little wider</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

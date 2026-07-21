@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+#vault-root * { box-sizing: border-box; }
+#vault-root {
+  --bg: #1B1F23;
+  --panel: #262B30;
+  --panel-2: #2E3439;
+  --brass: #C9A24B;
+  --brass-bright: #E0BE6E;
+  --parchment: #EDE6D8;
+  --parchment-dim: #A8A196;
+  --copper: #B8562F;
+  --line: #3A4046;
+
+  background: var(--bg);
+  color: var(--parchment);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+#vault-root .mono { font-family: 'JetBrains Mono', monospace; }
+#vault-root h1, #vault-root h2, #vault-root h3, #vault-root .display {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+#vault-root .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+#vault-root nav {
+  border-bottom: 1px solid var(--line);
+  background: rgba(27,31,35,0.95);
+  position: sticky; top: 0; z-index: 50;
+}
+#vault-root .nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1080px; margin: 0 auto;
+}
+#vault-root .logo { display:flex; align-items:center; gap:10px; }
+#vault-root .logo-mark {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--brass);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Oswald'; font-weight:700; color: var(--brass); font-size:14px;
+}
+#vault-root .logo-text { font-family:'Oswald'; font-weight:600; font-size:19px; letter-spacing:0.08em; }
+#vault-root .navlinks { display:flex; gap: 4px; }
+#vault-root .navlinks button {
+  background:none; border:none; color: var(--parchment-dim); font-family:'Oswald';
+  text-transform:uppercase; letter-spacing:0.05em; font-size: 13px; padding: 8px 14px;
+  cursor:pointer; border-radius: 3px; transition: all .15s;
+}
+#vault-root .navlinks button:hover { color: var(--parchment); background: var(--panel-2); }
+#vault-root .navlinks button.active { color: var(--bg); background: var(--brass); }
+
+/* HERO */
+#vault-root .hero {
+  padding: 56px 24px 40px; text-align:center; border-bottom: 1px solid var(--line);
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,162,75,0.08), transparent 60%);
+}
+#vault-root .eyebrow {
+  color: var(--brass); font-family:'JetBrains Mono'; font-size: 12px; letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+#vault-root .hero h1 { font-size: 40px; line-height:1.1; margin-bottom: 10px; }
+#vault-root .hero p.sub { color: var(--parchment-dim); font-size: 15px; max-width: 460px; margin: 0 auto 32px; }
+
+/* DIAL */
+#vault-root .dial-area { display:flex; flex-direction:column; align-items:center; gap: 20px; }
+#vault-root .dial-wrap { position: relative; width: 220px; height: 220px; }
+#vault-root .dial-face {
+  width: 100%; height: 100%; border-radius: 50%;
+  background: conic-gradient(from 0deg, #30363c 0deg, #23282c 20deg, #30363c 40deg, #23282c 60deg, #30363c 80deg, #23282c 100deg, #30363c 120deg, #23282c 140deg, #30363c 160deg, #23282c 180deg, #30363c 200deg, #23282c 220deg, #30363c 240deg, #23282c 260deg, #30363c 280deg, #23282c 300deg, #30363c 320deg, #23282c 340deg, #30363c 360deg);
+  border: 4px solid var(--panel-2);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 0 0 8px var(--bg), 0 0 0 9px var(--line);
+  position: relative;
+  transition: transform 2.2s cubic-bezier(.15,.85,.25,1);
+}
+#vault-root .dial-center {
+  position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+  width: 74px; height: 74px; border-radius: 50%;
+  background: var(--panel); border: 2px solid var(--brass);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono'; color: var(--brass); font-size: 20px; font-weight:700;
+}
+#vault-root .dial-pointer {
+  position:absolute; top: -6px; left: 50%; transform: translateX(-50%);
+  width: 0; height:0; border-left: 8px solid transparent; border-right: 8px solid transparent;
+  border-bottom: 14px solid var(--brass-bright); z-index: 5;
+  filter: drop-shadow(0 0 4px rgba(224,190,110,0.5));
+}
+#vault-root .spin-btn {
+  background: var(--brass); color: var(--bg); border: none; font-family:'Oswald';
+  text-transform:uppercase; letter-spacing:0.06em; font-weight:600; font-size: 14px;
+  padding: 13px 30px; border-radius: 3px; cursor:pointer; transition: all .15s;
+}
+#vault-root .spin-btn:hover { background: var(--brass-bright); transform: translateY(-1px); }
+#vault-root .spin-btn:disabled { opacity: 0.5; cursor:not-allowed; }
+
+#vault-root .unlocked-card {
+  margin-top: 8px; background: var(--panel); border: 1px solid var(--brass);
+  border-radius: 6px; padding: 20px; max-width: 380px; width: 100%;
+  animation: reveal .5s ease;
+}
+@keyframes reveal { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform: translateY(0);} }
+#vault-root .unlocked-card .tag {
+  display:inline-block; font-family:'JetBrains Mono'; font-size: 10px; color: var(--brass);
+  border: 1px solid var(--brass); padding: 2px 8px; border-radius: 20px; margin-bottom: 10px;
+}
+
+/* SECTIONS */
+#vault-root section.block { padding: 44px 24px; border-bottom: 1px solid var(--line); }
+#vault-root .block-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 22px; flex-wrap:wrap; gap:8px;}
+#vault-root .block-head h2 { font-size: 24px; }
+#vault-root .block-head .count { color: var(--parchment-dim); font-family:'JetBrains Mono'; font-size:13px; }
+
+/* GRID */
+#vault-root .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 16px; }
+#vault-root .card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  overflow: hidden; display:flex; flex-direction:column; transition: border-color .15s, transform .15s;
+}
+#vault-root .card:hover { border-color: var(--brass); transform: translateY(-2px); }
+#vault-root .card img { width:100%; height: 140px; object-fit: cover; display:block; background:var(--panel-2); }
+#vault-root .card-body { padding: 14px; display:flex; flex-direction:column; gap: 8px; flex:1; }
+#vault-root .card-cat { font-family:'JetBrains Mono'; font-size: 10px; color: var(--brass); text-transform:uppercase; letter-spacing:0.08em; }
+#vault-root .card-title { font-family:'Oswald'; font-size: 16px; font-weight:500; }
+#vault-root .card-desc { font-size: 12.5px; color: var(--parchment-dim); flex:1; }
+#vault-root .card-foot { display:flex; align-items:center; justify-content:space-between; margin-top: 4px; }
+#vault-root .card-price { font-family:'JetBrains Mono'; font-weight:700; color: var(--brass-bright); font-size:15px; }
+#vault-root .claim-btn {
+  background: var(--copper); color: var(--parchment); border:none; font-family:'Oswald';
+  text-transform:uppercase; font-size:11px; letter-spacing:0.05em; padding: 8px 12px;
+  border-radius:3px; cursor:pointer; font-weight:600;
+}
+#vault-root .claim-btn:hover { background: #cc6438; }
+
+#vault-root .cat-filter { display:flex; gap:6px; flex-wrap:wrap; }
+#vault-root .cat-filter button {
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--parchment-dim);
+  font-family:'JetBrains Mono'; font-size: 11px; padding: 6px 12px; border-radius: 20px; cursor:pointer;
+}
+#vault-root .cat-filter button.active { background: var(--brass); color: var(--bg); border-color: var(--brass); }
+
+/* QUIZ */
+#vault-root .quiz-box { max-width: 520px; margin: 0 auto; background: var(--panel); border:1px solid var(--line); border-radius: 6px; padding: 28px; }
+#vault-root .quiz-step-label { font-family:'JetBrains Mono'; font-size: 11px; color: var(--brass); margin-bottom: 8px; }
+#vault-root .quiz-q { font-family:'Oswald'; font-size: 20px; margin-bottom: 18px; }
+#vault-root .quiz-opts { display:flex; flex-direction:column; gap: 10px; }
+#vault-root .quiz-opts button {
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--parchment);
+  text-align:left; padding: 12px 16px; border-radius: 4px; cursor:pointer; font-size: 14px;
+  transition: all .15s;
+}
+#vault-root .quiz-opts button:hover { border-color: var(--brass); background: #333a41; }
+#vault-root .quiz-progress { display:flex; gap:5px; margin-bottom: 20px; }
+#vault-root .quiz-progress div { height:3px; flex:1; background: var(--line); border-radius:2px; }
+#vault-root .quiz-progress div.done { background: var(--brass); }
+#vault-root .quiz-restart { background:none; border: 1px solid var(--line); color: var(--parchment-dim); padding: 8px 16px; border-radius:3px; cursor:pointer; font-family:'JetBrains Mono'; font-size:12px; margin-top: 16px;}
+
+/* ADMIN */
+#vault-root .admin-login { max-width: 340px; margin: 40px auto; text-align:center; }
+#vault-root .admin-login input {
+  width:100%; background: var(--panel-2); border:1px solid var(--line); color: var(--parchment);
+  padding: 12px 14px; border-radius: 4px; font-family:'JetBrains Mono'; margin: 14px 0; font-size:14px;
+}
+#vault-root .stat-row { display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom: 28px; }
+#vault-root .stat-card { background: var(--panel); border:1px solid var(--line); border-radius:6px; padding:16px; }
+#vault-root .stat-num { font-family:'JetBrains Mono'; font-size: 26px; color: var(--brass-bright); font-weight:700; }
+#vault-root .stat-label { font-size: 11px; color: var(--parchment-dim); text-transform:uppercase; letter-spacing:0.05em; margin-top:4px; }
+
+#vault-root table { width:100%; border-collapse: collapse; font-size: 13px; }
+#vault-root th { text-align:left; font-family:'JetBrains Mono'; color: var(--brass); text-transform:uppercase; font-size:11px; padding: 8px; border-bottom: 1px solid var(--line);}
+#vault-root td { padding: 8px; border-bottom: 1px solid var(--line); }
+#vault-root .del-btn { background:none; border:1px solid var(--copper); color: var(--copper); padding:4px 10px; border-radius:3px; cursor:pointer; font-size:11px; }
+
+#vault-root .admin-form { background: var(--panel); border:1px solid var(--line); border-radius: 6px; padding: 20px; margin-bottom: 28px; }
+#vault-root .form-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+#vault-root .form-grid.full { grid-template-columns: 1fr; }
+#vault-root .admin-form label { font-size: 11px; color: var(--parchment-dim); text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:5px; }
+#vault-root .admin-form input, #vault-root .admin-form select, #vault-root .admin-form textarea {
+  width:100%; background: var(--bg); border:1px solid var(--line); color: var(--parchment);
+  padding: 9px 11px; border-radius:4px; font-family:'Inter'; font-size: 13px;
+}
+#vault-root .add-btn {
+  background: var(--brass); color: var(--bg); border:none; font-family:'Oswald'; text-transform:uppercase;
+  font-weight:600; letter-spacing:0.05em; padding: 10px 22px; border-radius:4px; cursor:pointer; font-size:13px;
+}
+#vault-root .settings-row { display:flex; align-items:center; gap:10px; margin-bottom:24px; font-size:13px; color: var(--parchment-dim); }
+#vault-root .settings-row input { width: 80px; background: var(--panel-2); border:1px solid var(--line); color: var(--parchment); padding:6px 10px; border-radius:4px; font-family:'JetBrains Mono'; }
+
+#vault-root .empty { text-align:center; color: var(--parchment-dim); font-size: 13px; padding: 30px; border: 1px dashed var(--line); border-radius: 6px; }
+#vault-root footer { text-align:center; padding: 24px; color: var(--parchment-dim); font-size: 12px; font-family:'JetBrains Mono'; }
